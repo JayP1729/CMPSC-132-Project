@@ -56,3 +56,18 @@ class GuessingGame:
         Output: bool
         """
         return self.won or (self.attempts >= self.max_attempts)
+
+def get_difficulty():
+    """
+    Prompts the player to pick a difficulty and validates input.
+    Input: none (reads from terminal)
+    Output: difficulty string
+    """
+    valid = ["easy", "medium", "hard"]
+    choice = input("Pick a difficulty level (easy / medium / hard): ").strip().lower()
+    while choice not in valid:
+        print("Please choose a valid option. Try easy, medium, or hard")
+        choice = input("Pick a difficulty level (easy / medium / hard): ").strip().lower()
+    return choice
+
+
