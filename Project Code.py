@@ -15,13 +15,12 @@ class GuessingGame:
 
     def __init__(self, difficulty):
         """
-        Sets up a new game round based on difficulty.
+        Sets up a new game round based on difficulty
         Input: difficulty string
         Output: none
         """
         setting = self.difficulty_setting[difficulty]
-        self.low = setting["range"]
-        self.high = setting["range"]
+        self.low, self.high = setting["range"]
         self.max_attempts = setting["max_attempts"]
         self.number = random.randint(self.low, self.high)
         self.attempts = 0
@@ -29,7 +28,7 @@ class GuessingGame:
 
     def check_guess(self, guess):
         """
-        Compares guess to secret number and returns feedback string.
+        Compares guess to secret number and returns feedback string
         Input: integer guess
         Output: "too_high", "too_low", or "correct"
         """
@@ -43,7 +42,7 @@ class GuessingGame:
     
     def attempts_remaining(self):
         """
-        Returns how many guesses the player has left.
+        Returns how many guesses the player has left
         Input: none
         Output: integer
         """
@@ -59,7 +58,7 @@ class GuessingGame:
 
 def get_difficulty():
     """
-    Prompts the player to pick a difficulty and validates input.
+    Prompts the player to pick a difficulty and validates input
     Input: none (reads from terminal)
     Output: difficulty string
     """
@@ -72,7 +71,7 @@ def get_difficulty():
 
 def get_guess(low, high):
     """
-    Prompts the player for a guess and validates it's an integer in range.
+    Prompts the player for a guess and validates it's an integer in range
     Input: none (reads from terminal); low/high define valid range
     Output: integer guess
     """
@@ -115,3 +114,32 @@ def play_round():
     if not game.won:
         print(f"Out of attempts! The number was {game.number}.\n")
  
+def ask_replay():
+    """
+    Asks if the player wants to play again
+    Input: none (reads from terminal)
+    Output: bool
+    """
+    answer = input("Play again? (yes / no): ").strip().lower()
+    while answer not in {"yes", "y", "no", "n"}:
+        print("Please type yes or no.")
+        answer = input("Play again? (yes / no): ").strip().lower()
+    return answer in {"yes", "y"}
+
+
+def main():
+    """
+    Runs the game and handles replay loop
+    Input: none
+    Output: none
+    """
+    print("Number Guessing Game")
+    play_round()
+    again = ask_replay()
+    while again:
+        play_round()
+        again = ask_replay()
+    print("Thanks for playing!")
+ 
+ 
+main()
