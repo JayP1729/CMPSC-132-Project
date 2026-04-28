@@ -71,8 +71,13 @@ def get_difficulty():
     return choice
 
 def guess(low, high):
+    """
+    Prompts the player for a guess and validates it's an integer in range.
+    Input: none (reads from terminal); low/high define valid range
+    Output: integer guess
+    """
     text = input(f"Your guess ({low}-{high}): ").strip()
-    while text.isdigit():
+    while not text.lstrip("-").isdigit() or not (low <= int(text) <= high):
         if not text.lstrip("-").isdigit():
             print("Please enter a number")
         else:
