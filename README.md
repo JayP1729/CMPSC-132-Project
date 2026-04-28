@@ -9,9 +9,9 @@ To run the program, simply hit run and start guessing!
 You first have to select a difficulty when playing - either easy, medium, or hard 
 The computer then generates a random number in a certain range based off of the difficulty you want to play
 You are also given a maximum number of attempts that is determined by your difficulty
-<<<<<<< HEAD
-Once you either guess the number correctly or run out of attempts, the program displays the correct number, and asks if you want to play again. 
-=======
+
 Once you either guess the number correctly or run out of attempts, the program displays the correct number, and asks if you want to play again. 
 
->>>>>>> c0e609fb0055965122a7a1c5a9b50a068b505295
+Once you either guess the number correctly or run out of attempts, the program displays the correct number, and asks if you want to play again. 
+
+
