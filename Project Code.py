@@ -70,4 +70,14 @@ def get_difficulty():
         choice = input("Pick a difficulty level (easy / medium / hard): ").strip().lower()
     return choice
 
+def guess(low, high):
+    text = input(f"Your guess ({low}-{high}): ").strip()
+    while text.isdigit():
+        if not text.lstrip("-").isdigit():
+            print("Please enter a number")
+        else:
+            print(f"Guess must be between {low} and {high}")
+        text = input(f"Your guess ({low}-{high}): ").strip()
+    return int(text)
+
 
