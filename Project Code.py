@@ -41,7 +41,7 @@ class GuessingGame:
         self.won = True
         return "correct"
     
-    def attempts_reminaing(self):
+    def attempts_remaining(self):
         """
         Returns how many guesses the player has left.
         Input: none
@@ -70,7 +70,7 @@ def get_difficulty():
         choice = input("Pick a difficulty level (easy / medium / hard): ").strip().lower()
     return choice
 
-def guess(low, high):
+def get_guess(low, high):
     """
     Prompts the player for a guess and validates it's an integer in range.
     Input: none (reads from terminal); low/high define valid range
@@ -85,4 +85,33 @@ def guess(low, high):
         text = input(f"Your guess ({low}-{high}): ").strip()
     return int(text)
 
-
+def play_round():
+    """
+    Runs one full game round from difficulty selection to win/loss.
+    Input: none
+    Output: none
+    """
+    difficulty = get_difficulty()
+    game = GuessingGame(difficulty)
+ 
+    low = game.low
+    high = game.high
+    print(f"\nOkay! I picked a number between {low} and {high}.")
+    print(f"You have {game.max_attempts} attempts. Good luck!\n")
+ 
+    while not game.is_over():
+        remaining = game.attempts_remaining()
+        print(f"Attempts remaining: {remaining}")
+        guess = get_guess(low, high)
+        result = game.check_guess(guess)
+ 
+        if result == "correct":
+            print(f"\nCongratulations! You got it in {game.attempts} attempt(s)!\n")
+        elif result == "too_low":
+            print("Too low! Guess higher.\n")
+        else:
+            print("Too high! Guess lower.\n")
+ 
+    if not game.won:
+        print(f"Out of attempts! The number was {game.number}.\n")
+ 
