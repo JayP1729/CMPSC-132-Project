@@ -12,6 +12,5 @@ You are also given a maximum number of attempts that is determined by your diffi
 
 Once you either guess the number correctly or run out of attempts, the program displays the correct number, and asks if you want to play again. 
 
-Once you either guess the number correctly or run out of attempts, the program displays the correct number, and asks if you want to play again. 
 
 
